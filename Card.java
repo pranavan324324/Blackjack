@@ -1,11 +1,26 @@
-package Blackjack;
-
 public class Card {
-    private String symbol;
-    private int number;
+    private final Suit suit;
+    private final Rank rank;
 
-    public Card(String symbol,int number){
-        this.symbol=symbol;
-        this.number=number;
+    public Card(Suit suit, Rank rank) {
+        this.suit = suit;
+        this.rank = rank;
+    }
+
+    public Suit getSuit() {
+        return suit;
+    }
+
+    public Rank getRank() {
+        return rank;
+    }
+
+    public int getValue() {
+        return rank.getValue();
+    }
+
+    @Override
+    public String toString() {
+        return rank + " of " + suit;
     }
 }
