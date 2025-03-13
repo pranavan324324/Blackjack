@@ -1,17 +1,18 @@
-package Blackjack;
-
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Player {
-    private int playerBalance = 1500;
-    private static double playerBet;
-    private static int cardSummaryPlayer;
-    private static Map<String,Integer> PlayerCards = new HashMap<>();
+    private int position;
+    private String name;
+    private int balance;
+    private List<Card> cards;
 
-    public Player(int playerBalance){
-        this.playerBalance=playerBalance;
+
+    public Player(int position, String name, int balance) {
+        this.position = position;
+        this.name = name;
+        this.balance = balance;
     }
 
 }
