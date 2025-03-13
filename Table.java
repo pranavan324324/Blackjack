@@ -39,10 +39,10 @@ public class Table {
             playerCards.add(carddeck.drawCard());
         }
 
-        System.out.println("Cashiercards"+ cashier.getCards().stream().mapToInt(Card::getValue).sum());
+        System.out.println("Cashier: Cards " + cashier.getCards() + " with value " + cashier.getCardsValuesSum());
 
         for (Player p:players){
-            System.out.println(p.getName()+": "+p.getCards().stream().mapToInt(Card::getValue).sum());
+            System.out.println(p.getName()+": " + p.getCards() + " with value " + p.getCardsValuesSum());
         }
     }
 }

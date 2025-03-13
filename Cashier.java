@@ -18,4 +18,17 @@ public class Cashier {
 
     public Cashier() {}
 
+    public int getCardsValuesSum() {
+        var cardsValuesSum = cards.stream().mapToInt(Card::getValue).sum();
+        if (cardsValuesSum <= 21) {
+            return cardsValuesSum;
+        }
+        var numberOfAces = cards.stream().filter(card -> card.getRank().equals(Rank.ACE)).count();
+        for (int i = 0; i < numberOfAces; i++) {
+            if (cardsValuesSum > 21) {
+                cardsValuesSum += 1 - 11;
+            }
+        }
+        return cardsValuesSum;
+    }
 }

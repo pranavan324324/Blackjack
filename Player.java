@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 
 public class Player {
     private int position;
@@ -49,4 +52,17 @@ public class Player {
         this.balance = balance;
     }
 
+    public int getCardsValuesSum() {
+        var cardsValuesSum = cards.stream().mapToInt(Card::getValue).sum();
+        if (cardsValuesSum <= 21) {
+            return cardsValuesSum;
+        }
+        var numberOfAces = cards.stream().filter(card -> card.getRank().equals(Rank.ACE)).count();
+        for (int i = 0; i < numberOfAces; i++) {
+            if (cardsValuesSum > 21) {
+                cardsValuesSum += 1 - 11;
+            }
+        }
+        return cardsValuesSum;
+    }
 }
