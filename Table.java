@@ -1,3 +1,5 @@
+package Blackjack;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -18,6 +20,29 @@ public class Table {
             System.out.println(playerName + " mit wie viel Geld möchtest du spielen?");
             int playerBalance = userInput.nextInt();
             players.add(new Player(i, playerName, playerBalance));
+        }
+
+        var carddeck = new CardDeck();
+
+        var cashier = new Cashier();
+        var cashierCards = cashier.getCards();
+        cashierCards.add(carddeck.drawCard());
+        cashierCards.add(carddeck.drawCard());
+
+        for (Player p:players){
+            var playerCards = p.getCards();
+            playerCards.add(carddeck.drawCard());
+        }
+
+        for (Player p:players){
+            var playerCards = p.getCards();
+            playerCards.add(carddeck.drawCard());
+        }
+
+        System.out.println("Cashiercards"+ cashier.getCards().stream().mapToInt(Card::getValue).sum());
+
+        for (Player p:players){
+            System.out.println(p.getName()+": "+p.getCards().stream().mapToInt(Card::getValue).sum());
         }
     }
 }
