@@ -41,8 +41,11 @@ public class Table {
 
         System.out.println("Cashier: Cards " + cashier.getCards() + " with value " + cashier.getCardsValuesSum());
 
+//        for (Player p:players){
+//            System.out.println(p.getName()+": " + p.getCards() + " with value " + p.getCardsValuesSum());
+//        }
         for (Player p:players){
-            System.out.println(p.getName()+": " + p.getCards() + " with value " + p.getCardsValuesSum());
+            Player.playPlayer(p,carddeck);
         }
     }
 }

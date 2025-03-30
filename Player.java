@@ -1,9 +1,6 @@
 package Blackjack;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
@@ -65,4 +62,46 @@ public class Player {
         }
         return cardsValuesSum;
     }
+
+    public static void playPlayer(Player p, CardDeck cardDeck) {
+        Scanner userInput = new Scanner(System.in);
+        int drawOrPass;
+        var cardSum = p.getCardsValuesSum();
+        System.out.println(p.getName()+", deine Karten: " + p.getCards() + " dein Wert: " + p.getCardsValuesSum());
+            do {
+                System.out.println("Möchtest du eine weitere Karte ziehen oder passen?\n1 - weitere Karte ziehen\n2 - passen");
+                drawOrPass = userInput.nextInt();
+
+                if (drawOrPass == 1){
+                    var playerCards = p.getCards();
+                    playerCards.add(cardDeck.drawCard());
+                    System.out.println("Card: "+p.getCards().getLast());
+                    cardSum= p.getCardsValuesSum();
+                    System.out.println("Neuer Wert: "+cardSum);
+
+                } else if (drawOrPass == 2) {
+                    System.out.println("pass");
+                    break;
+                }
+                else {
+                    System.out.println("Input invalid!");
+                }
+
+                if (cardSum>21){
+                    System.out.println(p.getName()+ ", You are busted, you have: "+cardSum);
+                    break;
+                }
+
+            }while(drawOrPass==1);
+
+
+
+
+
+    }
+
+
+
 }
+
+
