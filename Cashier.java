@@ -16,7 +16,9 @@ public class Cashier {
         this.cards = cards;
     }
 
-    public Cashier() {}
+    public Cashier() {
+
+    }
 
     public int getCardsValuesSum() {
         var cardsValuesSum = cards.stream().mapToInt(Card::getValue).sum();
@@ -30,5 +32,16 @@ public class Cashier {
             }
         }
         return cardsValuesSum;
+    }
+
+    public void dealerEndDraw(Cashier cashier,CardDeck cardDeck){
+        var cardsValueSum = getCardsValuesSum();
+        while (cardsValueSum<17){
+            var cashierCards = cashier.getCards();
+            cashier.cards.add(cardDeck.drawCard());
+            System.out.println("Card: "+cashier.getCards().getLast());
+            cardsValueSum= cashier.getCardsValuesSum();
+            System.out.println("Neuer Wert: "+cardsValueSum);
+        }
     }
 }
