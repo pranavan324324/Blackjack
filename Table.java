@@ -15,6 +15,9 @@ public class Table {
         int numbersOfPlayer = userInput.nextInt();
 
         List<Player> players = new ArrayList<>();
+        var carddeck = new CardDeck();
+        var cashier = new Cashier();
+        var cashierCards = cashier.getCards();
 
         for (int i = 1; numbersOfPlayer >= i; i++) {
             System.out.println("Wie heisst du Spieler " + i + "?");
@@ -22,12 +25,10 @@ public class Table {
             System.out.println(playerName + " mit wie viel Geld möchtest du spielen?");
             int playerBalance = userInput.nextInt();
             players.add(new Player(i, playerName, playerBalance));
+
         }
         do {
-            var carddeck = new CardDeck();
 
-            var cashier = new Cashier();
-            var cashierCards = cashier.getCards();
             cashierCards.add(carddeck.drawCard());
             System.out.println("Cashier: Cards " + cashier.getCards() + " with value " + cashier.getCardsValuesSum());
             cashierCards.add(carddeck.drawCard());
@@ -43,15 +44,12 @@ public class Table {
             }
 
 
-//        for (Player p:players){
-//            System.out.println(p.getName()+": " + p.getCards() + " with value " + p.getCardsValuesSum());
-//        }
             for (Player p : players) {
-                Player.playPlayer(p, carddeck);
+                p.playPlayer(carddeck);
             }
 
             System.out.println("Cashier: Cards " + cashier.getCards() + " with value " + cashier.getCardsValuesSum());
-            cashier.dealerEndDraw(cashier, carddeck);
+            cashier.dealerEndDraw(carddeck);
 
             System.out.println("Do you want to play another round?" + "\n1 - Play another round\n2 - Exit game");
             repeat = userInput.nextInt();
@@ -60,6 +58,8 @@ public class Table {
                 var playerCards = p.getCards();
                 playerCards.clear();
             }
+            cashierCards=cashier.getCards();
+            cashierCards.clear();
 
         } while (repeat == 1);
 

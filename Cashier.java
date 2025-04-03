@@ -34,13 +34,13 @@ public class Cashier {
         return cardsValuesSum;
     }
 
-    public void dealerEndDraw(Cashier cashier,CardDeck cardDeck){
+    public void dealerEndDraw(CardDeck cardDeck){
         var cardsValueSum = getCardsValuesSum();
         while (cardsValueSum<17){
-            var cashierCards = cashier.getCards();
-            cashier.cards.add(cardDeck.drawCard());
-            System.out.println("Card: "+cashier.getCards().getLast());
-            cardsValueSum= cashier.getCardsValuesSum();
+            var cashierCards = this.getCards();
+            this.cards.add(cardDeck.drawCard());
+            System.out.println("Card: "+this.getCards().getLast());
+            cardsValueSum= this.getCardsValuesSum();
             System.out.println("Neuer Wert: "+cardsValueSum);
         }
     }

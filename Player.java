@@ -63,20 +63,21 @@ public class Player {
         return cardsValuesSum;
     }
 
-    public static void playPlayer(Player p, CardDeck cardDeck) {
+    public void playPlayer(CardDeck cardDeck) {
         Scanner userInput = new Scanner(System.in);
+
         int drawOrPass;
-        var cardSum = p.getCardsValuesSum();
-        System.out.println(p.getName()+", deine Karten: " + p.getCards() + " dein Wert: " + p.getCardsValuesSum());
+        var cardSum = this.getCardsValuesSum();
+        System.out.println(this.getName()+", deine Karten: " + this.getCards() + " dein Wert: " + this.getCardsValuesSum());
             do {
                 System.out.println("Möchtest du eine weitere Karte ziehen oder passen?\n1 - weitere Karte ziehen\n2 - passen");
                 drawOrPass = userInput.nextInt();
 
                 if (drawOrPass == 1){
-                    var playerCards = p.getCards();
+                    var playerCards = this.getCards();
                     playerCards.add(cardDeck.drawCard());
-                    System.out.println("Card: "+p.getCards().getLast());
-                    cardSum= p.getCardsValuesSum();
+                    System.out.println("Card: "+this.getCards().getLast());
+                    cardSum= this.getCardsValuesSum();
                     System.out.println("Neuer Wert: "+cardSum);
 
                 } else if (drawOrPass == 2) {
@@ -88,7 +89,7 @@ public class Player {
                 }
 
                 if (cardSum>21){
-                    System.out.println(p.getName()+ ", You are busted, you have: "+cardSum);
+                    System.out.println(this.getName()+ ", You are busted, you have: "+cardSum);
                     break;
                 }
 
