@@ -76,9 +76,12 @@ public class Player {
                 if (drawOrPass == 1){
                     var playerCards = this.getCards();
                     playerCards.add(cardDeck.drawCard());
+                    System.out.println("");
                     System.out.println("Card: "+this.getCards().getLast());
                     cardSum= this.getCardsValuesSum();
+                    System.out.println("Cards: "+getCards());
                     System.out.println("Neuer Wert: "+cardSum);
+                    System.out.println("");
 
                 } else if (drawOrPass == 2) {
                     System.out.println("pass");
@@ -90,6 +93,7 @@ public class Player {
 
                 if (cardSum>21){
                     System.out.println(this.getName()+ ", You are busted, you have: "+cardSum);
+                    System.out.println(" ");
                     break;
                 }
 

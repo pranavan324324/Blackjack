@@ -39,9 +39,24 @@ public class Cashier {
         while (cardsValueSum<17){
             var cashierCards = this.getCards();
             this.cards.add(cardDeck.drawCard());
+            System.out.println(" ");
             System.out.println("Card: "+this.getCards().getLast());
             cardsValueSum= this.getCardsValuesSum();
+            System.out.println(getCards());
             System.out.println("Neuer Wert: "+cardsValueSum);
+        }
+    }
+
+    public void detectWin(Player p){
+        var cashierCardsSum = this.getCardsValuesSum();
+        var playerCardsSum = p.getCardsValuesSum();
+
+        if (playerCardsSum>cashierCardsSum && playerCardsSum<=21){
+            System.out.println("Player wins!");
+        } else if (cashierCardsSum>playerCardsSum && cashierCardsSum<=21) {
+            System.out.println("Cashier wins!");
+        } else if (cashierCardsSum==playerCardsSum && playerCardsSum<=21) {
+            System.out.println("Push");
         }
     }
 }

@@ -47,9 +47,14 @@ public class Table {
             for (Player p : players) {
                 p.playPlayer(carddeck);
             }
-
+            System.out.println(" ");
             System.out.println("Cashier: Cards " + cashier.getCards() + " with value " + cashier.getCardsValuesSum());
             cashier.dealerEndDraw(carddeck);
+
+            for (Player p: players){
+                cashier.detectWin(p);
+            }
+
 
             System.out.println("Do you want to play another round?" + "\n1 - Play another round\n2 - Exit game");
             repeat = userInput.nextInt();
