@@ -1,11 +1,10 @@
-package Blackjack;
+package com.procoloco.blackjack;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Table {
-
 
     public static void main(String[] args) {
         int repeat = 1;
@@ -87,4 +86,6 @@ public class Table {
 
 
     }
+
+
 }

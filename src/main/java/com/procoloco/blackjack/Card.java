@@ -1,4 +1,4 @@
-package Blackjack;
+package com.procoloco.blackjack;
 
 public class Card {
     private final Suit suit;
