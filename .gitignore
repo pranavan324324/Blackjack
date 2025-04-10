@@ -1,0 +1,23 @@
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Maven
+target/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Maven wrapper
+.mvn/
+.mvn/wrapper/
+
+# Logs
+*.log
+
+# User-specific files
+*.swp
+*~

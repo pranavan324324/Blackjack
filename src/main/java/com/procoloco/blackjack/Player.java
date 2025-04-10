@@ -1,9 +1,6 @@
-package Blackjack;
+package com.procoloco.blackjack;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
 
 public class Player {
     private int position;
