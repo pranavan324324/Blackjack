@@ -50,13 +50,19 @@ public class Cashier {
     public void detectWin(Player p){
         var cashierCardsSum = this.getCardsValuesSum();
         var playerCardsSum = p.getCardsValuesSum();
+        System.out.println("");
+        System.out.println(p.getName());
 
         if (playerCardsSum>cashierCardsSum && playerCardsSum<=21){
-            System.out.println("Player wins!");
-        } else if (cashierCardsSum>playerCardsSum && cashierCardsSum<=21) {
-            System.out.println("Cashier wins!");
+            System.out.println("You win!");
+        } else if (playerCardsSum<=21 && cashierCardsSum > 21) {
+            System.out.println("cashier busted, you win!");
         } else if (cashierCardsSum==playerCardsSum && playerCardsSum<=21) {
             System.out.println("Push");
+        } else if (playerCardsSum > 21) {
+            System.out.println("You bust, you loose");
+        } else {
+            System.out.println("Cashier wins!");
         }
     }
 }

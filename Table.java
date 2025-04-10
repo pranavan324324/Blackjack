@@ -22,12 +22,29 @@ public class Table {
         for (int i = 1; numbersOfPlayer >= i; i++) {
             System.out.println("Wie heisst du Spieler " + i + "?");
             String playerName = userInput.next();
-            System.out.println(playerName + " mit wie viel Geld möchtest du spielen?");
-            int playerBalance = userInput.nextInt();
-            players.add(new Player(i, playerName, playerBalance));
+            int playerBalance = 1500;
+            players.add(new Player(i, playerName, playerBalance,0));
 
         }
         do {
+
+
+            for (Player p:players){
+                System.out.println("Dein Guthaben: "+ p.getBalance());
+
+                System.out.println("Wie viel möchtest du einsetzen "+p.getName()+"?");
+                p.setPlayerBet(userInput.nextInt());
+
+                int playerBet = p.getPlayerBet();
+
+
+                System.out.println();
+                System.out.println(p.getName()+" hat "+ playerBet+" gesetzt");
+                p.setBalance(p.getBalance()-playerBet);
+                System.out.println("Restliches Guthaben: "+p.getBalance());
+                System.out.println("");
+            }
+
 
             cashierCards.add(carddeck.drawCard());
             System.out.println("Cashier: Cards " + cashier.getCards() + " with value " + cashier.getCardsValuesSum());
@@ -55,7 +72,7 @@ public class Table {
                 cashier.detectWin(p);
             }
 
-
+            System.out.println("");
             System.out.println("Do you want to play another round?" + "\n1 - Play another round\n2 - Exit game");
             repeat = userInput.nextInt();
 

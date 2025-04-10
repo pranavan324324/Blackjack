@@ -10,6 +10,15 @@ public class Player {
     private String name;
     private int balance;
     private List<Card> cards = new ArrayList<>();
+    private int playerBet;
+
+    public int getPlayerBet() {
+        return playerBet;
+    }
+
+    public void setPlayerBet(int playerBet) {
+        this.playerBet = playerBet;
+    }
 
     public int getPosition() {
         return position;
@@ -43,10 +52,11 @@ public class Player {
         this.cards = cards;
     }
 
-    public Player(int position, String name, int balance) {
+    public Player(int position, String name, int balance, int bet) {
         this.position = position;
         this.name = name;
         this.balance = balance;
+        this.playerBet = bet;
     }
 
     public int getCardsValuesSum() {
@@ -85,6 +95,7 @@ public class Player {
 
                 } else if (drawOrPass == 2) {
                     System.out.println("pass");
+                    System.out.println("");
                     break;
                 }
                 else {
@@ -98,10 +109,6 @@ public class Player {
                 }
 
             }while(drawOrPass==1);
-
-
-
-
 
     }
 
