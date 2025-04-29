@@ -8,6 +8,7 @@ public class Player {
     private int balance;
     private List<Card> cards = new ArrayList<>();
     private int playerBet;
+    private Scanner userInputScanner;
 
     public int getPlayerBet() {
         return playerBet;
@@ -54,6 +55,15 @@ public class Player {
         this.name = name;
         this.balance = balance;
         this.playerBet = bet;
+        this.userInputScanner = new Scanner(System.in);
+    }
+
+    public Player(int position, String name, int balance, int bet, Scanner userInputScanner) {
+        this.position = position;
+        this.name = name;
+        this.balance = balance;
+        this.playerBet = bet;
+        this.userInputScanner = userInputScanner;
     }
 
     public int getCardsValuesSum() {
@@ -70,15 +80,13 @@ public class Player {
         return cardsValuesSum;
     }
 
-    public void playPlayer(CardDeck cardDeck) {
-        Scanner userInput = new Scanner(System.in);
-
+    public void play(CardDeck cardDeck) {
         int drawOrPass;
         var cardSum = this.getCardsValuesSum();
         System.out.println(this.getName()+", deine Karten: " + this.getCards() + " dein Wert: " + this.getCardsValuesSum());
             do {
                 System.out.println("Möchtest du eine weitere Karte ziehen oder passen?\n1 - weitere Karte ziehen\n2 - passen");
-                drawOrPass = userInput.nextInt();
+                drawOrPass = userInputScanner.nextInt();
 
                 if (drawOrPass == 1){
                     var playerCards = this.getCards();
@@ -108,10 +116,6 @@ public class Player {
             }while(drawOrPass==1);
 
     }
-
-
-
-
 }
 
 

@@ -35,11 +35,10 @@ public class Cashier {
     public void dealerEndDraw(CardDeck cardDeck){
         var cardsValueSum = getCardsValuesSum();
         while (cardsValueSum<17){
-            var cashierCards = this.getCards();
             this.cards.add(cardDeck.drawCard());
             System.out.println(" ");
-            System.out.println("Card: "+this.getCards().getLast());
-            cardsValueSum= this.getCardsValuesSum();
+            System.out.println("Card: " + this.getCards().getLast());
+            cardsValueSum = this.getCardsValuesSum();
             System.out.println(getCards());
             System.out.println("Neuer Wert: "+cardsValueSum);
         }
