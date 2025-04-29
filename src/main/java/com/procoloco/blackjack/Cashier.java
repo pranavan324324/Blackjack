@@ -44,7 +44,7 @@ public class Cashier {
         }
     }
 
-    public void detectWin(Player p,int playerBet){
+    public void detectWin(Player p,double playerBet){
         var cashierCardsSum = this.getCardsValuesSum();
         var playerCardsSum = p.getCardsValuesSum();
         double playerBalance = p.getBalance();

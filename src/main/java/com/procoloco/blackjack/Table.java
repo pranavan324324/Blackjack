@@ -26,6 +26,13 @@ public class Table {
 
         }
         do {
+            for (Player p : players) {
+                var playerCards = p.getCards();
+                playerCards.clear();
+            }
+            cashierCards=cashier.getCards();
+            cashierCards.clear();
+
             for (Player p:players){
                 p.getPlayerBets();
             }
@@ -54,15 +61,20 @@ public class Table {
             cashier.dealerEndDraw(carddeck);
 
             for (Player p: players){
-                int playerBet = p.getPlayerBet();
+                double playerBet = p.getPlayerBet();
                 cashier.detectWin(p,playerBet);
             }
+            List<Player> playersToRemove = new ArrayList<>();
+
             for (Player p:players){
                 var balance = p.getBalance();
                 if (balance<=0){
                     System.out.println("Game over");
-                    players.remove(p);
+                    playersToRemove.add(p);
                 }
+            }
+            for (Player p: playersToRemove) {
+                players.remove(p);
             }
 
             if(players.isEmpty()){
@@ -74,15 +86,11 @@ public class Table {
             System.out.println("Do you want to play another round?" + "\n1 - Play another round\n2 - Exit game");
             repeat = userInput.nextInt();
 
-            for (Player p : players) {
-                var playerCards = p.getCards();
-                playerCards.clear();
-            }
-            cashierCards=cashier.getCards();
-            cashierCards.clear();
+
 
         } while (repeat == 1);
 
+        System.out.println("Game finished!");
 
     }
 
