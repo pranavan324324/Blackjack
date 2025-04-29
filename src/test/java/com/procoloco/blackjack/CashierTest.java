@@ -18,6 +18,22 @@ public class CashierTest {
          Cashier cashier = new Cashier();
          cashier.setCards(cashierCards);
 
-         assertEquals(15, cashier.getCardsValuesSum());
+         var actualResult = cashier.getCardsValuesSum();
+
+         assertEquals(15, actualResult);
      }
+
+    @Test
+    public void getCardsValuesSum_worksAsExpectedForAces() {
+        var card1 = new Card(Suit.CLUBS, Rank.ACE);
+        var card2 = new Card(Suit.DIAMONDS, Rank.ACE);
+        var card3 = new Card(Suit.HEARTS, Rank.ACE);
+        var card4 = new Card(Suit.SPADES, Rank.ACE);
+        var cashierCards = new ArrayList<>(Arrays.asList(card1, card2, card3, card4));
+
+        Cashier cashier = new Cashier();
+        cashier.setCards(cashierCards);
+
+        assertEquals(14, cashier.getCardsValuesSum());
+    }
 }

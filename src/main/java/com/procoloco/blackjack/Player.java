@@ -5,7 +5,7 @@ import java.util.*;
 public class Player {
     private int position;
     private String name;
-    private double balance;
+    private int balance;
     private List<Card> cards = new ArrayList<>();
     private int playerBet;
 
@@ -33,11 +33,11 @@ public class Player {
         this.name = name;
     }
 
-    public double getBalance() {
+    public int getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(int balance) {
         this.balance = balance;
     }
 
@@ -108,45 +108,6 @@ public class Player {
             }while(drawOrPass==1);
 
     }
-
-    public void getPlayerBets(){
-        System.out.println("Dein Guthaben: "+ this.getBalance());
-
-        Scanner userInput = new Scanner(System.in);
-        System.out.println("Wie viel möchtest du einsetzen "+this.getName()+"?");
-        this.setPlayerBet(userInput.nextInt());
-
-        checkPlayerBetToHigh();
-
-    }
-
-    public void checkPlayerBetToHigh(){
-        var playerBet = this.getPlayerBet();
-        var playerBalance = this.getBalance();
-        if(playerBet>playerBalance){
-            System.out.println("Balance to low try again...\n");
-            Scanner userInput = new Scanner(System.in);
-            System.out.println("Wie viel möchtest du einsetzen "+this.getName()+"?");
-            this.setPlayerBet(userInput.nextInt());
-            playerBet = this.getPlayerBet();
-            System.out.println();
-            System.out.println(this.getName()+" hat "+ playerBet+" gesetzt");
-            this.setBalance(this.getBalance()-playerBet);
-            System.out.println("Restliches Guthaben: "+this.getBalance());
-            System.out.println("");
-        }else {
-            playerBet = this.getPlayerBet();
-
-
-            System.out.println();
-            System.out.println(this.getName()+" hat "+ playerBet+" gesetzt");
-            this.setBalance(this.getBalance()-playerBet);
-            System.out.println("Restliches Guthaben: "+this.getBalance());
-            System.out.println("");
-        }
-
-    }
-
 
 
 

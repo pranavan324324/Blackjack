@@ -26,8 +26,6 @@ public class Table {
 
         }
         do {
-
-
             for (Player p:players){
                 p.getPlayerBets();
             }
@@ -49,7 +47,7 @@ public class Table {
 
 
             for (Player p : players) {
-                p.playPlayer(carddeck);
+                p.play(carddeck);
             }
             System.out.println(" ");
             System.out.println("Cashier: Cards " + cashier.getCards() + " with value " + cashier.getCardsValuesSum());
