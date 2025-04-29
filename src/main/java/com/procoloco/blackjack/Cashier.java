@@ -45,22 +45,33 @@ public class Cashier {
         }
     }
 
-    public void detectWin(Player p){
+    public void detectWin(Player p,int playerBet){
         var cashierCardsSum = this.getCardsValuesSum();
         var playerCardsSum = p.getCardsValuesSum();
+        double playerBalance = p.getBalance();
+        double playerWinAmount = 0;
         System.out.println("");
         System.out.println(p.getName());
 
         if (playerCardsSum>cashierCardsSum && playerCardsSum<=21){
             System.out.println("You win!");
+            playerWinAmount = playerBet*1.5;
+            System.out.println("Payout: "+playerWinAmount);
         } else if (playerCardsSum<=21 && cashierCardsSum > 21) {
             System.out.println("cashier busted, you win!");
+            playerWinAmount = playerBet*1.5;
+            System.out.println("Payout: "+playerWinAmount);
         } else if (cashierCardsSum==playerCardsSum && playerCardsSum<=21) {
             System.out.println("Push");
+            playerWinAmount = playerBet;
+            System.out.println("Payout: "+playerWinAmount);
         } else if (playerCardsSum > 21) {
             System.out.println("You bust, you loose");
+            playerWinAmount = 0;
+            System.out.println("Payout: "+0);
         } else {
             System.out.println("Cashier wins!");
         }
+        p.setBalance(playerBalance+playerWinAmount);
     }
 }

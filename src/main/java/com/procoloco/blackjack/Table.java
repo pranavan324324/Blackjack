@@ -29,19 +29,7 @@ public class Table {
 
 
             for (Player p:players){
-                System.out.println("Dein Guthaben: "+ p.getBalance());
-
-                System.out.println("Wie viel möchtest du einsetzen "+p.getName()+"?");
-                p.setPlayerBet(userInput.nextInt());
-
-                int playerBet = p.getPlayerBet();
-
-
-                System.out.println();
-                System.out.println(p.getName()+" hat "+ playerBet+" gesetzt");
-                p.setBalance(p.getBalance()-playerBet);
-                System.out.println("Restliches Guthaben: "+p.getBalance());
-                System.out.println("");
+                p.getPlayerBets();
             }
 
 
@@ -68,7 +56,20 @@ public class Table {
             cashier.dealerEndDraw(carddeck);
 
             for (Player p: players){
-                cashier.detectWin(p);
+                int playerBet = p.getPlayerBet();
+                cashier.detectWin(p,playerBet);
+            }
+            for (Player p:players){
+                var balance = p.getBalance();
+                if (balance<=0){
+                    System.out.println("Game over");
+                    players.remove(p);
+                }
+            }
+
+            if(players.isEmpty()){
+                System.out.println("No players left, GAME OVER!");
+                break;
             }
 
             System.out.println("");
