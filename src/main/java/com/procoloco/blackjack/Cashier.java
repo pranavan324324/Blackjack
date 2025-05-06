@@ -64,6 +64,17 @@ public class Cashier {
             System.out.println("Push");
             playerWinAmount = playerBet;
             System.out.println("Payout: "+playerWinAmount);
+        } else if (p.checkIfBlackJack() && this.checkIfBlackJack()) {
+            System.out.println("Push");
+            playerWinAmount = playerBet;
+        } else if (p.checkIfBlackJack()) {
+            System.out.println("You had a Blackjack!");
+            playerWinAmount=playerBet*2;
+            System.out.println("Payout:"+playerWinAmount);
+        } else if (this.checkIfBlackJack()) {
+            System.out.println("Cashier has Blackjack, you loose");
+            playerWinAmount = 0;
+
         } else if (playerCardsSum > 21) {
             System.out.println("You bust, you loose");
             playerWinAmount = 0;
@@ -73,4 +84,18 @@ public class Cashier {
         }
         p.setBalance(playerBalance+playerWinAmount);
     }
+
+    public boolean checkIfBlackJack(){
+        var cardSum =this.getCardsValuesSum();
+
+        if (cardSum==21){
+            System.out.println("Blackjack");
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    }
+
 }

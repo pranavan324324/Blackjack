@@ -45,6 +45,7 @@ public class Table {
             for (Player p : players) {
                 var playerCards = p.getCards();
                 playerCards.add(carddeck.drawCard());
+                p.checkIfBlackJack();
             }
 
             for (Player p : players) {

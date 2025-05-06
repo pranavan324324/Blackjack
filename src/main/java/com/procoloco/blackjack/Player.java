@@ -6,7 +6,7 @@ public class Player {
     private int position;
     private String name;
     private double balance;
-    private List<Card> cards = new ArrayList<>();
+    public List<Card> cards = new ArrayList<>();
     private double playerBet;
     private Scanner userInputScanner;
 
@@ -14,7 +14,7 @@ public class Player {
         return playerBet;
     }
 
-    public void setPlayerBet(int playerBet) {
+    public void setPlayerBet(double playerBet) {
         this.playerBet = playerBet;
     }
 
@@ -122,7 +122,7 @@ public class Player {
 
         Scanner userInput = new Scanner(System.in);
         System.out.println("Wie viel möchtest du einsetzen "+this.getName()+"?");
-        this.setPlayerBet(userInput.nextInt());
+        this.setPlayerBet(userInput.nextDouble());
 
         checkPlayerBetToHigh();
 
@@ -151,6 +151,20 @@ public class Player {
             this.setBalance(this.getBalance()-playerBet);
             System.out.println("Restliches Guthaben: "+this.getBalance());
             System.out.println("");
+        }
+
+    }
+
+    public boolean checkIfBlackJack(){
+        var cardSum =this.getCardsValuesSum();
+        var playerBet=this.getPlayerBet();
+
+        if (cardSum==21){
+            System.out.println("Blackjack");
+            return true;
+        }
+        else {
+            return false;
         }
 
     }
